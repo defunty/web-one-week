@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  color: white;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.game-view {
+  background-color: black;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100vh; 
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+}
+
+.card-field-wrapper {
+  padding: 1.5vh;
+  position: absolute;
+  height: 20vh;
+  width: 100%;
+  &#other-field-wrapper {
+    top: 0;
+  }
+  &#your-field-wrapper {
+    bottom: 0;
+  }
+  .card-field {
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 1vh;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#battle-field-wrapper {
+  position: absolute;
+  top: 23vh;
+  height: 54vh;
+  padding: 1.5vh;
+  width: 100%;
+  #battle-field {
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 100%;
+    padding: 1vh;
+    width: 100%;
+  }
+}
