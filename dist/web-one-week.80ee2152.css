@@ -8,7 +8,7 @@ body {
   padding: 0;
 }
 
-.game-view {
+#game-view {
   background-color: black;
   overflow: hidden;
   margin: 0 auto;
@@ -18,19 +18,29 @@ body {
   position: relative;
 }
 
-.card-field-wrapper {
+#info-field-wrapper {
   padding: 1.5vh;
   position: absolute;
   height: 20vh;
   width: 100%;
-}
-.card-field-wrapper#other-field-wrapper {
   top: 0;
 }
-.card-field-wrapper#your-field-wrapper {
+#info-field-wrapper #info-field {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 1vh;
+  height: 100%;
+  width: 100%;
+}
+
+#card-field-wrapper {
+  padding: 1.5vh;
+  position: absolute;
+  height: 20vh;
+  width: 100%;
   bottom: 0;
 }
-.card-field-wrapper .card-field {
+#card-field-wrapper #card-field {
   border: 1px solid white;
   border-radius: 4px;
   padding: 1vh;

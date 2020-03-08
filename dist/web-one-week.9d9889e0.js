@@ -118,7 +118,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.coffee":[function(require,module,exports) {
-(function () {}).call(this);
+(function () {// デッキを初期化
+  // 手札を引く
+  // お題が出る
+  // 手札を出す
+  // 結果表示
+  // 結果ごとの内部処理
+}).call(this);
 },{}],"../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37513" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37501" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
