@@ -5,5 +5,9 @@ $ ->
     window.deck = new window.Deck(pref_id)
     scene_controller = new window.SceneController()
     scene_controller.scene_change('pref-select', 'battle')
+    scene_controller.load_info {
+      life: window.life
+      message: 'Round 1/47'
+    }
     
 

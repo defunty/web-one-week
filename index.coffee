@@ -6,7 +6,7 @@
 # 結果ごとの内部処理
 
 window.deck = null
-window.test = '1'
+window.life = 3
 require './deck.coffee'
 require './scene_controller.coffee'
 require './scene_start.coffee'
