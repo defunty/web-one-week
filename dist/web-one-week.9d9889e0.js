@@ -177,24 +177,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     _createClass(SceneController, [{
       key: "scene_change",
-      value: function scene_change(new_scene) {
-        $(".js-schene-wrapper").addClass('d-none');
-        return $(".js-schene-wrapper[data-id='".concat(new_scene, "']")).removeClass('d-none');
+      value: function scene_change(now_scene, new_scene) {
+        console.log(new_scene);
+        $(".js-schene-wrapper[data-scene-code='".concat(now_scene, "']")).addClass('d-none');
+        return $(".js-schene-wrapper[data-scene-code='".concat(new_scene, "']")).removeClass('d-none');
       }
     }]);
 
     return SceneController;
   }();
 }).call(this);
-},{}],"scene_1.coffee":[function(require,module,exports) {
+},{}],"scene_start.coffee":[function(require,module,exports) {
 (function () {
   $(function () {
     return $('.js-start').click(function () {
       var scene_controller;
       scene_controller = new window.SceneController();
-      return scene_controller.scene_change(1);
+      return scene_controller.scene_change('start', 'pref-select');
     });
   });
+}).call(this);
+},{}],"scene_pref_select.coffee":[function(require,module,exports) {
+(function () {
+  $(function () {
+    return $('.js-pref-list').click(function () {
+      var scene_controller;
+      scene_controller = new window.SceneController();
+      return scene_controller.scene_change('pref-select', 'battle');
+    });
+  });
+}).call(this);
+},{}],"scene_battle.coffee":[function(require,module,exports) {
+(function () {
+  $(function () {});
 }).call(this);
 },{}],"index.coffee":[function(require,module,exports) {
 (function () {
@@ -208,7 +223,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
   require('./scene_controller.coffee');
 
-  require('./scene_1.coffee');
+  require('./scene_start.coffee');
+
+  require('./scene_pref_select.coffee');
+
+  require('./scene_battle.coffee');
 
   this.scene = 0;
   this.mydeck = null;
@@ -217,11 +236,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     return (init = function init() {
       var scene_controller;
       scene_controller = new window.SceneController();
-      return scene_controller.scene_change(0);
+      return scene_controller.scene_change('', 'start');
     })();
   });
 }).call(this);
-},{"./deck.coffee":"deck.coffee","./scene_controller.coffee":"scene_controller.coffee","./scene_1.coffee":"scene_1.coffee"}],"../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./deck.coffee":"deck.coffee","./scene_controller.coffee":"scene_controller.coffee","./scene_start.coffee":"scene_start.coffee","./scene_pref_select.coffee":"scene_pref_select.coffee","./scene_battle.coffee":"scene_battle.coffee"}],"../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

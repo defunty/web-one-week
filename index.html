@@ -8,13 +8,20 @@
 </head>
 <body>
   <div id="game-view">
-    <!-- schene-0 -->
-    <div class="schene-wrapper js-schene-wrapper d-none" data-id="0">
+    <!-- schene-start -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="start">
       <button id="start-button" class="js-start">start</button>
     </div>
 
-    <!-- schene-1 -->
-    <div class="schene-wrapper js-schene-wrapper d-none" data-id="1">
+    <!-- schene-pref-select -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="pref-select">
+      <ul id="pref-list" class="js-pref-list">
+        <li data-pref-id="1">東京</li>
+      </ul>
+    </div>
+
+    <!-- schene-battle -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="battle">
       <div id="info-field-wrapper">
         <div id="info-field">
           info

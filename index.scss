@@ -2,6 +2,11 @@
   box-sizing: border-box;
   color: white;
 }
+ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 body {
   margin: 0;
   padding: 0;
@@ -29,6 +34,20 @@ body {
   top: 50vh;
   left: 50vh;
   width: 200px;
+}
+
+#pref-list {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  li {
+    cursor: pointer;
+    color: white;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
 }
 
 #info-field-wrapper {

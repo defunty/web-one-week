@@ -3,6 +3,12 @@
   color: white;
 }
 
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -31,6 +37,20 @@ body {
   top: 50vh;
   left: 50vh;
   width: 200px;
+}
+
+#pref-list {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+#pref-list li {
+  cursor: pointer;
+  color: white;
+}
+#pref-list li:hover {
+  background-color: white;
+  color: black;
 }
 
 #info-field-wrapper {

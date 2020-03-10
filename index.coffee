@@ -7,12 +7,14 @@
 
 require './deck.coffee'
 require './scene_controller.coffee'
-require './scene_1.coffee'
+require './scene_start.coffee'
+require './scene_pref_select.coffee'
+require './scene_battle.coffee'
 @scene = 0
 @mydeck = null
 
 $ ->
   do init = () ->
     scene_controller = new window.SceneController()
-    scene_controller.scene_change(0)
+    scene_controller.scene_change('','start')
 
