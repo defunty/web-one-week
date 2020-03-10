@@ -3,6 +3,7 @@
   color: white;
 }
 ul,li {
+  display: block;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -74,11 +75,28 @@ body {
   bottom: 0;
   
   #card-field {
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 4px;
     padding: 1vh;
     height: 100%;
     width: 100%;
+
+    #card-list {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      li {
+        cursor: pointer;
+        border: 1px solid white;
+        height: 100%;
+        width: 18%;
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
   }
 }
 
@@ -97,3 +115,4 @@ body {
     width: 100%;
   }
 }
+
