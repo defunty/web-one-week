@@ -117,15 +117,111 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.coffee":[function(require,module,exports) {
-(function () {// デッキを初期化
+})({"deck.coffee":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+(function () {
+  window.Deck = function () {
+    var Deck =
+    /*#__PURE__*/
+    function () {
+      _createClass(Deck, null, [{
+        key: "staticFunc",
+        value: function staticFunc() {} // do something...
+
+      }]);
+
+      function Deck(code, pref) {
+        _classCallCheck(this, Deck);
+
+        console.log(code);
+        console.log(pref);
+        this.code = code; // 一意なコード
+
+        this.name = pref;
+      }
+
+      _createClass(Deck, [{
+        key: "initializeDeck",
+        value: function initializeDeck() {
+          return console.log('initial');
+        }
+      }]);
+
+      return Deck;
+    }();
+
+    ;
+    Deck.test = 1;
+    return Deck;
+  }.call(this);
+}).call(this);
+},{}],"scene_controller.coffee":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+(function () {
+  window.SceneController =
+  /*#__PURE__*/
+  function () {
+    function SceneController() {
+      _classCallCheck(this, SceneController);
+    }
+
+    _createClass(SceneController, [{
+      key: "scene_change",
+      value: function scene_change(new_scene) {
+        $(".js-schene-wrapper").addClass('d-none');
+        return $(".js-schene-wrapper[data-id='".concat(new_scene, "']")).removeClass('d-none');
+      }
+    }]);
+
+    return SceneController;
+  }();
+}).call(this);
+},{}],"scene_1.coffee":[function(require,module,exports) {
+(function () {
+  $(function () {
+    return $('.js-start').click(function () {
+      var scene_controller;
+      scene_controller = new window.SceneController();
+      return scene_controller.scene_change(1);
+    });
+  });
+}).call(this);
+},{}],"index.coffee":[function(require,module,exports) {
+(function () {
+  // デッキを初期化
   // 手札を引く
   // お題が出る
   // 手札を出す
   // 結果表示
   // 結果ごとの内部処理
+  require('./deck.coffee');
+
+  require('./scene_controller.coffee');
+
+  require('./scene_1.coffee');
+
+  this.scene = 0;
+  this.mydeck = null;
+  $(function () {
+    var init;
+    return (init = function init() {
+      var scene_controller;
+      scene_controller = new window.SceneController();
+      return scene_controller.scene_change(0);
+    })();
+  });
 }).call(this);
-},{}],"../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./deck.coffee":"deck.coffee","./scene_controller.coffee":"scene_controller.coffee","./scene_1.coffee":"scene_1.coffee"}],"../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -153,7 +249,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46513" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
