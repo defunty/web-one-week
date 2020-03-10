@@ -1,4 +1,9 @@
 $ ->
-  $('.js-pref-list').click () ->
+  $('.js-pref-list li').click (e) ->
+    pref_id = $(e.currentTarget).attr('data-pref-id')
+    console.log($(e.currentTarget))
+    window.deck = new window.Deck(pref_id)
     scene_controller = new window.SceneController()
     scene_controller.scene_change('pref-select', 'battle')
+    
+

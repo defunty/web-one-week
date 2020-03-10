@@ -1,15 +1,8 @@
-class window.Deck
-  @test: 1
-  
+class window.Deck  
   @staticFunc: ->
     # do something...
 
-  constructor: (code, pref)->
+  constructor: (code)->
+    console.log('deck cons')
     console.log(code)
-    console.log(pref)
-    
     @code = code # 一意なコード
-    @name = pref
-
-  initializeDeck: ->
-    console.log('initial')
