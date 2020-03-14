@@ -39,30 +39,33 @@ class window.Data
   master_card['famima'] = 'ファミリーマートの数'
   master_rank['famima'] = '東京都,愛知県,大阪府,神奈川,埼玉県,千葉県,兵庫県,福岡県,静岡県,三重県,宮城県,岐阜県,茨城県,沖縄県,京都府,鹿児島,広島県,長野県,石川県,岡山県,北海道,愛媛県,栃木県,青森県,熊本県,岩手県,福島県,新潟県,滋賀県,富山県,長崎県,福井県,秋田県,山形県,奈良県,香川県,宮崎県,群馬県,大分県,和歌山,高知県,山口県,徳島県,山梨県,佐賀県,鳥取県,島根県'
 
-
   @pref_data = []
+  _data_array = []
   data_array = master_pref.split(',')
   for v,k in data_array
     @pref_data.push v
+    # todo リファクタリング
+    _data_array.push v
   
   @random_pref_data = []
   for v in @pref_data
     rand = Math.floor(Math.random() * Math.floor(47 - @random_pref_data.length))
-    @random_pref_data.push @pref_data[rand]
+    @random_pref_data.push _data_array[rand]
+    _data_array.splice(rand,1)
 
   @card_data = {}
   for v,k in master_card
     @card_data[k] = v
 
   @rank_data = {}
-  for v,k in master_rank
+  for k,v of master_rank
     data_array = v.split(',')
     data = {}
     for k2,v2 in data_array
       data[k2] = v2 + 1
     throw new Error "[001]" if Object.keys(data).length isnt 47
-    @data[input_data[0]] = data
-    
+    @rank_data[k] = data
+  console.log(@rank_data)
   #data_transoform(pref)
   #data_transoform(onsen)
   #data_transoform(menseki)
