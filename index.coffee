@@ -7,6 +7,11 @@
 
 window.deck = null
 window.life = 3
+window.your_pref = null
+window.opponent_pref = null
+window.opponent_list = null
+
+require './data.coffee'
 require './deck.coffee'
 require './scene_controller.coffee'
 require './scene_start.coffee'
@@ -15,6 +20,9 @@ require './scene_battle.coffee'
 
 $ ->
   do init = () ->
-    scene_controller = new window.SceneController()
-    scene_controller.scene_change('','start')
+    #result = window.Data.getter_data()
+    #console.log(result)
+    # result = window.Data.data['orange']['北海道']
+    
+    window.SceneController.scene_change('','start')
 

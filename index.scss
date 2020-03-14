@@ -39,11 +39,13 @@ body {
 
 #pref-list {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
   li {
     cursor: pointer;
     color: white;
+    width: 33.3%;
     &:hover {
       background-color: white;
       color: black;
