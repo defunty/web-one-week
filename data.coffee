@@ -47,7 +47,7 @@ class window.Data
     #random_data_array.push v
 
   @card_data = {}
-  for v,k in master_card
+  for v,k of master_card
     @card_data[k] = v
 
   @rank_data = {}
@@ -70,11 +70,12 @@ class window.Data
       random_data_array.splice(rand,1)
 
     window.card_list = []
-    for v in @card_data
+    for k,v of @card_data
       random_data_array.push v
-    for v in @card_data
-      rand = Math.floor(Math.random() * Math.floor(@card_data.length - window.card_list.length))
+    for k,v of @card_data
+      rand = Math.floor(Math.random() * Math.floor(Object.keys(@card_data).length - window.card_list.length))
       window.card_list.push random_data_array[rand]
+      window.card_list
       random_data_array.splice(rand,1)
     window.life = 3
     window.your_pref = null
