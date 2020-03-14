@@ -46,12 +46,6 @@ class window.Data
     @pref_data.push v
     # todo リファクタリング
     _data_array.push v
-  
-  @random_pref_data = []
-  for v in @pref_data
-    rand = Math.floor(Math.random() * Math.floor(47 - @random_pref_data.length))
-    @random_pref_data.push _data_array[rand]
-    _data_array.splice(rand,1)
 
   @card_data = {}
   for v,k in master_card
@@ -65,13 +59,14 @@ class window.Data
       data[k2] = v2 + 1
     throw new Error "[001]" if Object.keys(data).length isnt 47
     @rank_data[k] = data
-  console.log(@rank_data)
-  #data_transoform(pref)
-  #data_transoform(onsen)
-  #data_transoform(menseki)
-  #data_transoform(jinkou)
-  #data_transoform(jinkou)
-  #data_transoform(mitudo)
-  #data_transoform(jinkou_zoukaritu)
-  #data_transoform(famima)
-  
+
+  @initialize: ->
+    @random_pref_data = []
+    for v in @pref_data
+      rand = Math.floor(Math.random() * Math.floor(47 - @random_pref_data.length))
+      @random_pref_data.push _data_array[rand]
+      _data_array.splice(rand,1)
+    window.life = 3
+    window.your_pref = null
+    window.opponent_pref = null
+    window.opponent_list = null
