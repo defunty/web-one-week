@@ -16,9 +16,5 @@ window.Data.initialize()
 
 $ ->
   do init = () ->
-    #result = window.Data.getter_data()
-    #console.log(result)
-    # result = window.Data.data['orange']['北海道']
-    
     window.SceneController.scene_change('','start')
 
