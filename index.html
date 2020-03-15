@@ -1,5 +1,66 @@
-<html>
-  <body>
-    <script src="./index.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.scss">
+</head>
+<body>
+  <div id="game-view">
+    <!-- schene-start -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="start">
+      <!-- schene-geme-over -->
+      <div class="js-game_over_message"></div>
+      <button id="start-button" class="js-start">start</button>
+    </div>
+
+    <!-- schene-pref-select -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="pref-select">
+      <ul id="pref-list" class="js-pref-list">
+      </ul>
+    </div>
+
+    <!-- schene-battle -->
+    <div class="schene-wrapper js-schene-wrapper d-none" data-scene-code="battle">
+      <div id="info-field-wrapper">
+        <div id="info-field" class="js-info-field">
+          <div id="life" class="js-life"></div>
+          <div id="round" class="js-round"></div>
+          <div id="message" class="js-message"></div>
+        </div>
+      </div>
+      <div id="battle-field-wrapper">
+        <div id="battle-field" class="js-battle-field">
+          <div id="theme" class="js-theme"></div>
+          <div id="your-pref" class="js-your_pref"></div>
+          <div id="your-rank" class="js-your_rank"></div>
+          <div>VS</div>
+          <div id="opponent-pref" class="js-opponent_pref"></div>
+          <div id="opponent-rank" class="js-opponent_rank"></div>
+          
+          <div id="battle-result" class="js-battle_result"></div>
+        </div>
+      </div>
+      <div id="card-field-wrapper">
+        <div id="card-field">
+          <ul id="card-list" class="js-card-list">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <h1>title</h1>
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="./index.coffee"></script>
+
+</body>
+
 </html>

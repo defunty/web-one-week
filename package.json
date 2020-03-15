@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.5.1",
+    "sass": "^1.26.2"
   }
 }
