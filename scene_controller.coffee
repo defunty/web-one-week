@@ -17,12 +17,12 @@ class window.SceneController
       return if count > 5
       $('.js-card-list').append("<li data-code='#{code}'>#{window.Data.card_data[code]}</li>")
       count++
-  
+
   @pop_card: ->
     window.Data.card_initialize if window.card_list.length
     code = window.card_list.pop()
     $('.js-card-list').append("<li data-code='#{code}'>#{window.Data.card_data[code]}</li>")
-  
+
   @card_event: ($this) ->
     card_code = $this.attr('data-code')
     your_rank = window.Data.rank_data[card_code][window.your_pref]
@@ -33,12 +33,12 @@ class window.SceneController
     }
     $this.remove()
     window.SceneController.pop_card()
-    
 
     if your_rank < opponent_rank # win
+      window.opponent_pref = window.opponent_list.pop()
       window.SceneController.render_doms {
-        message: '勝ちました！ クリックして次の相手へ'
-
+        message: "勝ちました！ 次の相手は 「#{window.opponent_pref}」"
+        round: "Round #{46 - window.opponent_list.length}/46"
       }
     else #lose
       window.life--
@@ -52,6 +52,7 @@ class window.SceneController
         window.SceneController.render_doms {
           message: '負けました... もう一度チャレンジ！'
           life: window.life
+          opponent_pref: window.opponent_pref
         }
         $('js-info-field').append('<button id="next-battle-button" class="js-next_battle_button">もう一度対戦！</button>')
         $('js-next-battle-button').click ->

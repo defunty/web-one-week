@@ -16,12 +16,12 @@ $ ->
         life: window.life
         round: "Round #{46 - window.opponent_list.length}/46"
         message: '勝負カードを選んでね'
-        your_pref: "あなた：#{window.your_pref}"
-        opponent_pref: "あいて：#{window.opponent_pref}"
+        your_pref: "#{window.your_pref}（あなた）"
+        opponent_pref: "#{window.opponent_pref}"
       }
 
       window.SceneController.render_card_list()
-      $('#card-list li').click ->
+      $('#card-list').on 'click', 'li', ->
         window.SceneController.card_event($(this))
 
 
