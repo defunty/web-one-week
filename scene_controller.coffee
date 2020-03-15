@@ -19,7 +19,7 @@ class window.SceneController
       count++
 
   @pop_card: ->
-    window.Data.card_initialize if window.card_list.length
+    window.Data.card_initialize() if window.card_list.length is 0
     card_code = window.card_list.pop()
     $('.js-card-list').append("<li data-code='#{card_code}'>#{window.Data.card_data[card_code]}</li>")
 
@@ -46,11 +46,18 @@ class window.SceneController
         round: "Round #{46 - window.opponent_list.length}/46"
       }
     else if your_rank < opponent_rank # win
-      window.opponent_pref = window.opponent_list.pop()
-      window.SceneController.render_doms {
-        message: "勝ちました！ 次の相手は 「#{window.opponent_pref}」"
-        round: "Round #{46 - window.opponent_list.length}/46"
-      }
+      if window.opponent_list.length is 0
+        window.SceneController.scene_change('battle', 'start')
+        window.SceneController.render_doms {
+          game_over_message: 'おめでとう！あなたの都道府県が日本一！'
+        }
+        window.Data.initialize()
+      else
+        window.opponent_pref = window.opponent_list.pop()
+        window.SceneController.render_doms {
+          message: "勝ちました！ 次の相手は 「#{window.opponent_pref}」"
+          round: "Round #{46 - window.opponent_list.length}/46"
+        }
     else #lose
       window.life--
       if window.life is 0 # game over

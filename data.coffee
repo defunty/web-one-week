@@ -200,4 +200,3 @@ class window.Data
       rand = Math.floor(Math.random() * Math.floor(Object.keys(@card_data).length - window.card_list.length))
       window.card_list.push random_data_array[rand]
       random_data_array.splice(rand,1)
-    
