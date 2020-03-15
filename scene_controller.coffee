@@ -20,16 +20,19 @@ class window.SceneController
 
   @pop_card: ->
     window.Data.card_initialize if window.card_list.length
-    code = window.card_list.pop()
-    $('.js-card-list').append("<li data-code='#{code}'>#{window.Data.card_data[code]}</li>")
+    card_code = window.card_list.pop()
+    $('.js-card-list').append("<li data-code='#{card_code}'>#{window.Data.card_data[card_code]}</li>")
 
   @card_event: ($this) ->
     card_code = $this.attr('data-code')
+    window.theme = $this.text()
     your_rank = window.Data.rank_data[card_code][window.your_pref]
     opponent_rank = window.Data.rank_data[card_code][window.opponent_pref]
     window.SceneController.render_doms {
-      your_rank: "#{your_rank}位"
-      opponent_rank: "#{opponent_rank}位"
+      theme: "テーマ：#{window.theme}"
+      your_rank: "#{your_rank}位 #{window.Data.value_data[card_code][your_pref]}#{window.Data.unit_data[card_code]}"
+      opponent_pref: window.opponent_pref
+      opponent_rank: "#{opponent_rank}位 #{window.Data.value_data[card_code][opponent_pref]}#{window.Data.unit_data[card_code]}"
     }
     $this.remove()
     window.SceneController.pop_card()
