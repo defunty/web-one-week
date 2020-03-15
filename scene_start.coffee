@@ -22,35 +22,7 @@ $ ->
 
       window.SceneController.render_card_list()
       $('#card-list li').click ->
-        $this = $ this
-        card_code = $this.attr('data-code')
-        your_rank = window.Data.rank_data[card_code][window.your_pref]
-        opponent_rank = window.Data.rank_data[card_code][window.opponent_pref]
-        window.SceneController.render_doms {
-          your_rank: "#{your_rank}位"
-          opponent_rank: "#{opponent_rank}位"
-        }
-        this.remove()
-        window.SceneController.pop_card()
-        
-
-        if your_rank < opponent_rank # win
-          window.SceneController.render_doms {
-            message: '勝ちました！ クリックして次の相手へ'
-
-          }
-        else #lose
-          window.life--
-          if window.life is 0 # game over
-            window.SceneController.scene_change('battle', 'game-over')
-            window.Data.initialize()
-          else
-            window.SceneController.render_doms {
-              message: '負けました... もう一度チャレンジ！'
-              life: window.life
-            }
-            $('js-info-field').append('<button id="next-battle-button" class="js-next_battle_button">もう一度対戦！</button>')
-            $('js-next-battle-button').click ->
+        window.SceneController.card_event($(this))
 
 
 

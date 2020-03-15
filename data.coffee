@@ -60,6 +60,8 @@ class window.Data
     @rank_data[k] = data
 
   @initialize: ->
+    $('.js-pref-list').html('')
+    $('.js-card-list').html('')
     @random_pref_data = []
     random_data_array = []
     for v in @pref_data
@@ -84,6 +86,5 @@ class window.Data
     for k,v of @card_data
       rand = Math.floor(Math.random() * Math.floor(Object.keys(@card_data).length - window.card_list.length))
       window.card_list.push random_data_array[rand]
-      console.log(random_data_array[rand])
       random_data_array.splice(rand,1)
     
