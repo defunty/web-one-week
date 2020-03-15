@@ -16,8 +16,8 @@ $ ->
         life: window.life
         round: "Round #{46 - window.opponent_list.length}/46"
         message: '勝負カードを選んでね'
-        your_pref: window.your_pref
-        opponent_pref: window.opponent_pref
+        your_pref: "あなた：#{window.your_pref}"
+        opponent_pref: "あいて：#{window.opponent_pref}"
       }
 
       window.SceneController.render_card_list()
@@ -30,10 +30,14 @@ $ ->
           your_rank: "#{your_rank}位"
           opponent_rank: "#{opponent_rank}位"
         }
+        this.remove()
+        window.SceneController.pop_card()
+        
 
         if your_rank < opponent_rank # win
           window.SceneController.render_doms {
             message: '勝ちました！ クリックして次の相手へ'
+
           }
         else #lose
           window.life--
@@ -43,11 +47,11 @@ $ ->
           else
             window.SceneController.render_doms {
               message: '負けました... もう一度チャレンジ！'
+              life: window.life
             }
             $('js-info-field').append('<button id="next-battle-button" class="js-next_battle_button">もう一度対戦！</button>')
             $('js-next-battle-button').click ->
-              
-              this.remove()
+
 
 
         

@@ -13,11 +13,19 @@ class window.SceneController
       $('.js-pref-list').append("<li data-pref-name='#{v}'>#{v}</li>")
 
   @render_card_list: ->
-    console.log 'lll'
-    console.log window.card_list
-    for v in window.card_list
-      console.log v
-      $('.js-card-list').append("<li data-doce='#{v}'>#{window.Data.card_data[v]}</li>")
+    count = 1
+    for code in window.card_list
+      return if count > 5
+      $('.js-card-list').append("<li data-code='#{code}'>#{window.Data.card_data[code]}</li>")
+      count++
+  
+  @pop_card: ->
+    window.Data.card_initialize if window.card_list.length
+    code = window.card_list.pop()
+    $('.js-card-list').append("<li data-code='#{code}'>#{window.Data.card_data[code]}</li>")
+    
+
+
 
   
   
