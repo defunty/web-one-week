@@ -13,7 +13,7 @@ $ ->
       window.SceneController.scene_change('pref-select', 'battle')
       window.opponent_pref = window.opponent_list.pop()
       window.SceneController.render_doms {
-        life: window.life
+        life: "ライフ：#{window.life}"
         round: "Round #{46 - window.opponent_list.length}/46"
         message: '勝負カードを選んでね'
         your_pref: "#{window.your_pref}（あなた）"
