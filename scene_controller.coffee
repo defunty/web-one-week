@@ -27,17 +27,25 @@ class window.SceneController
     card_code = $this.attr('data-code')
     window.theme = $this.text()
     your_rank = window.Data.rank_data[card_code][window.your_pref]
+    your_value = window.Data.value_data[card_code][window.your_pref]
     opponent_rank = window.Data.rank_data[card_code][window.opponent_pref]
+    opponent_value = window.Data.value_data[card_code][window.opponent_pref]
+    unit = window.Data.unit_data[card_code]
     window.SceneController.render_doms {
       theme: "テーマ：#{window.theme}"
-      your_rank: "#{your_rank}位 #{window.Data.value_data[card_code][your_pref]}#{window.Data.unit_data[card_code]}"
+      your_rank: "#{your_rank}位 #{your_value}#{unit}"
       opponent_pref: window.opponent_pref
-      opponent_rank: "#{opponent_rank}位 #{window.Data.value_data[card_code][opponent_pref]}#{window.Data.unit_data[card_code]}"
+      opponent_rank: "#{opponent_rank}位 #{opponent_value}#{unit}"
     }
     $this.remove()
     window.SceneController.pop_card()
 
-    if your_rank < opponent_rank # win
+    if your_value is opponent_value # draw
+      window.SceneController.render_doms {
+        message: "引き分けです もう一回！"
+        round: "Round #{46 - window.opponent_list.length}/46"
+      }
+    else if your_rank < opponent_rank # win
       window.opponent_pref = window.opponent_list.pop()
       window.SceneController.render_doms {
         message: "勝ちました！ 次の相手は 「#{window.opponent_pref}」"
@@ -48,20 +56,12 @@ class window.SceneController
       if window.life is 0 # game over
         window.SceneController.scene_change('battle', 'start')
         window.SceneController.render_doms {
-          game_over_message: '残念！もっと強い都道府県を選んでみてね'
+          game_over_message: '残念！クリアできないときはもっと強そうな都道府県を選んでみてね！'
         }
         window.Data.initialize()
       else
         window.SceneController.render_doms {
-          message: '負けました... もう一度チャレンジ！'
-          life: window.life
+          message: '負けました... もっと強いカードで勝負して！'
+          life: "ライフ：#{window.life}"
           opponent_pref: window.opponent_pref
         }
-        $('js-info-field').append('<button id="next-battle-button" class="js-next_battle_button">もう一度対戦！</button>')
-        $('js-next-battle-button').click ->
-    
-
-
-
-  
-  
